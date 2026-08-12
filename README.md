@@ -52,8 +52,6 @@ personal_page/
 ├── js/
 │   └── ...
 ├── assets/
-│   ├── images/
-│   ├── icons/
 │   └── resume.pdf
 └── README.md
 ```
