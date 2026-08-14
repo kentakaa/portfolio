@@ -144,4 +144,113 @@
 
   /* ---------- Loaded flag ---------- */
   document.documentElement.classList.add('is-ready');
+
+  /* ---------- Contact form submission ---------- */
+  (function () {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+
+    const formBtn = document.getElementById('contactFormBtn');
+    const formBtnText = formBtn.querySelector('.contact__form-btn-text');
+    const formBtnLoading = formBtn.querySelector('.contact__form-btn-loading');
+    const formFields = contactForm.querySelectorAll('.contact__form-input, .contact__form-textarea');
+
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // Disable button and show loading state
+      formBtn.disabled = true;
+      formBtnText.style.display = 'none';
+      formBtnLoading.style.display = 'inline-block';
+
+      // Build request body from form data
+      const formData = new FormData(contactForm);
+      const body = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject'),
+        message: formData.get('message')
+      };
+
+      // Determine API URL
+      // During development, the backend runs on port 8080.
+      // Using a relative path assumes the frontend is served from the same origin.
+      // For production behind Render, the URL will be set via the MONGODRI environment or deployment config.
+      const apiUrl = 'http://localhost:8080/api/contact';
+
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        });
+
+        // Reset button state
+        formBtn.disabled = false;
+        formBtnText.style.display = 'inline-block';
+        formBtnLoading.style.display = 'none';
+
+        if (response.ok) {
+          // Success: show success message, reset form after delay
+          const successMsg = document.createElement('p');
+          successMsg.className = 'contact__form-success';
+          successMsg.textContent = 'Your message has been sent. Thank you!';
+          contactForm.appendChild(successMsg);
+          contactForm.reset();
+          // Remove success message and hide form after 5 seconds
+          setTimeout(() => {
+            successMsg.remove();
+            // Optionally: hide the whole form section or reset visibility
+          }, 5000);
+        } else if (response.status === 400) {
+          // Validation errors
+          const errorData = await response.json();
+          // Display validation errors
+          formFields.forEach(field => {
+            const errorDiv = field.parentElement.querySelector('.contact__form-error');
+            if (errorDiv) errorDiv.remove();
+            // Show error message next to field
+            const fieldName = field.name;
+            let message = '';
+            if (errorData.errors) {
+              message = errorData.errors[fieldName] || 'Invalid input';
+            } else if (errorData.message) {
+              message = errorData.message;
+            }
+            if (message) {
+              const errorDiv = document.createElement('div');
+              errorDiv.className = 'contact__form-error';
+              errorDiv.textContent = message;
+              errorDiv.style.color = 'var(--accent)';
+              errorDiv.style.fontSize = '.78rem';
+              errorDiv.style.marginTop = '.4rem';
+              field.parentElement.appendChild(errorDiv);
+            }
+          });
+        } else if (response.status === 429) {
+          // Rate limited
+          const errorData = await response.json();
+          const retryAfter = response.headers.get('Retry-After') || '60';
+          alert('Too many submissions. Please try again in ' + retryAfter + ' seconds.');
+          formBtn.disabled = false;
+          formBtnText.style.display = 'inline-block';
+          formBtnLoading.style.display = 'none';
+        } else {
+          // Server error
+          alert('Something went wrong. Please try again later.');
+          formBtn.disabled = false;
+          formBtnText.style.display = 'inline-block';
+          formBtnLoading.style.display = 'none';
+        }
+      } catch (error) {
+        // Network error
+        alert('Something went wrong. Please try again later.');
+        formBtn.disabled = false;
+        formBtnText.style.display = 'inline-block';
+        formBtnLoading.style.display = 'none';
+      }
+    });
+  })();
 })();

@@ -1,0 +1,22 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Maven
+target/
+*.class
+
+# Agent / temporary verification files
+classpath.txt
+classpath_full.txt
+mvn_output.txt
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
