@@ -1,10 +1,24 @@
 package com.portfolio.backend.dto;
 
+import jakarta.validation.constraints.*;
+
 public class ContactSubmissionRequest {
 
+    @NotBlank(message = "Name is required")
+    @Size(max = 100, message = "Name must not exceed 100 characters")
     private String name;
+
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
+    @Size(max = 254, message = "Email must not exceed 254 characters")
     private String email;
+
+    @NotBlank(message = "Subject is required")
+    @Size(max = 200, message = "Subject must not exceed 200 characters")
     private String subject;
+
+    @NotBlank(message = "Message is required")
+    @Size(max = 5000, message = "Message must not exceed 5000 characters")
     private String message;
 
     public ContactSubmissionRequest() {
