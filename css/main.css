@@ -545,6 +545,52 @@ ul{list-style:none}
 .contact__links a:hover{color:var(--text)}
 .contact__links a:hover::after{width:100%}
 
+/* Contact form styles */
+.contact__form{max-width:600px;width:100%;margin-inline:auto}
+.contact__form-fields{display:flex;flex-direction:column;gap:var(--s-4)}
+.contact__form-group{display:flex;flex-direction:column;align-items:center}
+.contact__form-label{
+  font-family:var(--font-mono);font-size:.78rem;color:var(--text-muted);margin-bottom:.4rem;text-align:left;width:100%
+}
+.contact__form-input,
+.contact__form-textarea{
+  width:100%;max-width:100%;
+  padding:.8rem 1rem;border:1px solid var(--line);border-radius:8px;
+  font-family:var(--font-body);font-size:.94rem;color:var(--text);
+  background:var(--surface);transition:border-color .2s,background .2s;
+}
+.contact__form-input:focus,
+.contact__form-textarea:focus{
+  outline:none;border-color:var(--accent);background:var(--surface-2);
+}
+.contact__form-input::placeholder,
+.contact__form-textarea::placeholder{color:var(--text-dim)}
+.contact__form-textarea{min-height:12rem;resize:vertical}
+.contact__form-btn{
+  width:100%;max-width:300px;margin-inline:auto;margin-top:var(--s-4);
+  padding:.8rem 1.3rem;border:none;border-radius:999px;
+  font-family:var(--font-display);font-size:.9rem;font-weight:500;letter-spacing:.01em;
+  background:var(--accent);color:var(--bg);cursor:pointer;
+  transition:background .2s,transform .2s;
+  display:inline-flex;align-items:center;gap:.55rem;
+}
+.contact__form-btn:hover{background:var(--accent-dim)}
+.contact__form-btn:active{transform:translateY(1px)}
+.contact__form-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.contact__form-btn-loading{
+  display:none;width:100%;max-width:300px;margin-inline:auto;margin-top:var(--s-4);
+  padding:.8rem 1.3rem;border:none;border-radius:999px;
+  font-family:var(--font-display);font-size:.9rem;font-weight:500;letter-spacing:.01em;
+  background:var(--accent);color:var(--bg);
+  cursor:default;
+}
+.contact__form-success{
+  color:var(--accent);font-size:.9rem;margin-top:.5rem;text-align:center
+}
+.contact__form-error{
+  color:var(--accent);font-size:.78rem;margin-top:.4rem;text-align:left;width:100%
+}
+
 /* =========================================================
    FOOTER
    ========================================================= */

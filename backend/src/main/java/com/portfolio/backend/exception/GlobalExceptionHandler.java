@@ -3,9 +3,8 @@ package com.portfolio.backend.exception;
 import jakarta.validation.ConstraintViolationException;
 
 import org.springframework.http.HttpStatus;
-
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
@@ -19,21 +18,6 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
-
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Object> handleMethodArgumentNotValid(
-            MethodArgumentNotValidException ex,
-            WebRequest request) {
-
-        List<String> errors = ex.getBindingResult()
-                .getFieldErrors()
-                .stream()
-                .map(error -> error.getField() + " " + error.getDefaultMessage())
-                .collect(Collectors.toList());
-
-        String message = "Validation failed";
-        return buildValidationErrorResponse(errors, message, HttpStatus.BAD_REQUEST);
-    }
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> handleConstraintViolation(

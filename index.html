@@ -378,11 +378,39 @@
         <h2 class="contact__title" data-reveal>
           Got a system<br>that needs<br><em>building?</em>
         </h2>
-        <a href="mailto:arshad9922ali@gmail.com" class="contact__mail" data-reveal data-cta>
-          arshad9922ali@gmail.com
-          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <div class="contact__links" data-reveal>
+<a href="mailto:arshad9922ali@gmail.com" class="contact__mail" data-reveal data-cta>
+      arshad9922ali@gmail.com
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <!-- Contact form -->
+    <form class="contact__form" id="contactForm" data-reveal>
+      <div class="contact__form-fields">
+        <div class="contact__form-group">
+          <label for="name" class="contact__form-label">Name</label>
+          <input type="text" id="name" name="name" class="contact__form-input" required />
+        </div>
+        <div class="contact__form-group">
+          <label for="email" class="contact__form-label">Email</label>
+          <input type="email" id="email" name="email" class="contact__form-input" required />
+        </div>
+        <div class="contact__form-group">
+          <label for="subject" class="contact__form-label">Subject</label>
+          <input type="text" id="subject" name="subject" class="contact__form-input" required />
+        </div>
+        <div class="contact__form-group">
+          <label for="message" class="contact__form-label">Message</label>
+          <textarea id="message" name="message" class="contact__form-textarea" required></textarea>
+        </div>
+      </div>
+      <button type="submit" class="contact__form-btn" id="contactFormBtn">
+        <span class="contact__form-btn-text">Send message</span>
+        <span class="contact__form-btn-loading" style="display:none;">Sending...</span>
+      </button>
+    </form>
+    <!-- /Contact form -->
+
+    <div class="contact__links" data-reveal>
           <a href="https://github.com/kentakaa" target="_blank" rel="noopener">GitHub</a>
           <a href="https://www.linkedin.com/in/arshad-7188b9365" target="_blank" rel="noopener">LinkedIn</a>
           <a href="assets/Arshad_Resume_2026.pdf" target="_blank" rel="noopener" download>R&eacute;sum&eacute; PDF</a>
