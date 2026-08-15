@@ -176,7 +176,7 @@
       // During development, the backend runs on port 8080.
       // Using a relative path assumes the frontend is served from the same origin.
       // For production behind Render, the URL will be set via the MONGODRI environment or deployment config.
-      const apiUrl = 'http://localhost:8080/api/contact';
+      const apiUrl = 'https://portfolio-iesx.onrender.com/api/contact';
 
       try {
         const response = await fetch(apiUrl, {
