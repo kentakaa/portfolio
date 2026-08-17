@@ -2,7 +2,7 @@
 
 # Arshad — Software Developer Portfolio
 
-A modern, responsive personal portfolio website showcasing my work, technical skills, education, projects, and experience as a software developer.
+A Full stack, modern, responsive personal portfolio website showcasing my work, technical skills, education, projects, and experience as a software developer.
 
 ## Overview
 
@@ -40,6 +40,10 @@ The website focuses on:
 * GSAP / ScrollTrigger
 * Lenis
 * Git & GitHub
+* Spring boot
+* Spring MVC
+* MongoDB
+* GIT
 
 ## Project Structure
 
@@ -87,13 +91,16 @@ Open `index.html` in a browser, or use a local development server such as VS Cod
 
 ## Deployment
 
-The project is a static website and can be deployed using platforms such as:
+The project is a full stack website and can be deployed using platforms such as:
 
-* GitHub Pages
 * Netlify
 * Vercel
+* render
 
 Pushes to the connected repository can be used to trigger automatic deployments depending on the hosting configuration.
+
+## Live link
+URL: https://arshad-developer-portfolio.netlify.app/
 
 ## Author
 
@@ -105,4 +112,4 @@ GitHub: [github.com/kentakaa](https://github.com/kentakaa)
 
 ---
 
-Built with HTML, CSS, JavaScript, and a focus on modern web design and interaction.
+Built with Passion and excellence with focus on modern web design and interaction.
