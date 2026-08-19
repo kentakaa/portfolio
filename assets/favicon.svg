@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Dark Background -->
+  <rect width="512" height="512" fill="#0B0B0B"/>
+  
+  <!-- Monogram A -->
+  <g fill="none" stroke="#FF9500" stroke-linecap="square" stroke-linejoin="miter">
+    <!-- Outer Apex -->
+    <path d="M 128 412 L 256 100 L 384 412" stroke-width="44"/>
+    <!-- Technical Crossbar Node -->
+    <path d="M 180 300 H 228 V 260 H 284 V 300 H 332" stroke-width="32"/>
+  </g>
+</svg>
