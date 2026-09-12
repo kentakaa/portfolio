@@ -172,10 +172,7 @@
         message: formData.get('message')
       };
 
-      // Determine API URL
-      // During development, the backend runs on port 8080.
-      // Using a relative path assumes the frontend is served from the same origin.
-      // For production behind Render, the URL will be set via the MONGODRI environment or deployment config.
+    
       const apiUrl = 'https://portfolio-iesx.onrender.com/api/contact';
 
       try {
