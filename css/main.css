@@ -660,7 +660,6 @@ ul {
 }
 .marquee__track {
   display: flex;
-  gap: 1.2rem;
   align-items: center;
   padding: 0.85rem 0;
   font-family: var(--font-mono);
@@ -668,12 +667,27 @@ ul {
   color: var(--text-dim);
   white-space: nowrap;
   width: max-content;
-  animation: marquee 38s linear infinite;
+  will-change: transform;
+  animation: marquee 22s linear infinite;
+}
+.marquee__group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.marquee__group span {
+  padding-right: 1.2rem;
 }
 .marquee__track span:nth-child(odd) {
   color: var(--text-muted);
 }
+.hero__marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
 @keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
   to {
     transform: translateX(-50%);
   }
