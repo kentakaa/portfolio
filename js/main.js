@@ -75,17 +75,18 @@
   });
 
   /* ---------- Hero entrance timeline ---------- */
-  const heroEls = ['.hero__title', '.hero__eyebrow', '.hero__sub', '.hero__cta', '.hero__bento', '.hero__marquee'];
+  const heroEls = ['.hero__title', '.hero__eyebrow', '.hero__sub', '.hero__cta', '.hero__bento'];
 
   if (!reduceMotion && window.gsap) {
     gsap.set(heroEls, { opacity: 0, y: 24 });
+    gsap.set('.hero__marquee', { opacity: 0 });
     const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.9 } });
     tl.to('.hero__eyebrow', { opacity: 1, y: 0 }, 0)
       .to('.hero__title', { opacity: 1, y: 0, duration: 1.1 }, 0.05)
       .to('.hero__sub', { opacity: 1, y: 0 }, 0.25)
       .to('.hero__cta', { opacity: 1, y: 0 }, 0.4)
       .to('.hero__bento', { opacity: 1, y: 0, duration: 1 }, 0.3)
-      .to('.hero__marquee', { opacity: 1, y: 0 }, 0.55);
+      .to('.hero__marquee', { opacity: 1, duration: 0.9 }, 0.55);
   }
 
   /* ---------- Scroll reveal (generic) ---------- */
